@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  /* background-color: pink; */
+  background-image: url("./assets/pc-background-image.png");
+  background-size: cover;
+  background-position: center;
+}
