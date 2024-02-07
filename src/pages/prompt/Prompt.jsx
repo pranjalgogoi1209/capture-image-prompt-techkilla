@@ -4,13 +4,18 @@ import { useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { IoIosCloseCircle } from "react-icons/io";
 
 export default function Prompt({ capturedImage }) {
   const showImgRef = useRef();
   const [prompt, setPrompt] = useState("");
   const [generatedImg, setGeneratedImg] = useState();
 
-  generatedImg && console.log(prompt, generatedImg);
+  generatedImg && console.log("generated Image =>", generatedImg);
+
+  capturedImage && console.log("captured Image =>", capturedImage);
+
+  prompt && console.log("prompt =>", prompt);
 
   // toast options
   const toastOptions = {
@@ -34,7 +39,7 @@ export default function Prompt({ capturedImage }) {
       axios
         .post("https://59df-103-17-110-127.ngrok-free.app/img", {
           data: prompt,
-          image: capturedImage,
+          image: capturedImage.split(",")[1],
         })
         .then(function (response) {
           console.log(response);
@@ -52,7 +57,7 @@ export default function Prompt({ capturedImage }) {
       </header>
       <main className={styles.main}>
         <form className={styles.prompt} onSubmit={handleSubmit}>
-          <h2>Enter Your Prompt</h2>
+          {/* <h2>Enter Your Prompt</h2> */}
           <input
             type="text"
             name="prompt"
@@ -64,8 +69,15 @@ export default function Prompt({ capturedImage }) {
         </form>
         <div className={styles.generatedImgContainer} ref={showImgRef}>
           {generatedImg ? (
-            <div className={styles.image}>
-              <img src={generatedImg} alt="generated image" />
+            <div className={styles.modal}>
+              <div className={styles.image}>
+                <img src={generatedImg} alt="generated image" />
+              </div>
+              <IoIosCloseCircle
+                onClick={() => {
+                  showImgRef.current.style.display = "none";
+                }}
+              />
             </div>
           ) : (
             <div className={styles.loading}>
