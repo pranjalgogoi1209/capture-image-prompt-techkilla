@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
-import Prompt from "./pages/prompt/prompt";
+import Prompt from "./pages/prompt/Prompt";
 
 export default function App() {
   const [capturedImage, setCapturedImg] = useState();
