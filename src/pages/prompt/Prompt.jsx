@@ -68,23 +68,25 @@ export default function Prompt({ capturedImage }) {
           />
           <button type="submit">Generate</button>
         </form>
-        <div className={styles.generatedImgContainer} ref={showImgRef}>
-          {generatedImg ? (
-            <div className={styles.modal}>
-              <div className={styles.image}>
-                <img src={generatedImg} alt="generated image" />
+        <div className={styles.resultContainer}>
+          <div className={styles.generatedImgContainer} ref={showImgRef}>
+            {generatedImg ? (
+              <div className={styles.modal}>
+                <div className={styles.image}>
+                  <img src={generatedImg} alt="generated image" />
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className={styles.loading}>
-              <div className={styles.ldsRing}>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            ) : (
+              <div className={styles.loading}>
+                <div className={styles.ldsRing}>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </main>
       <ToastContainer />
