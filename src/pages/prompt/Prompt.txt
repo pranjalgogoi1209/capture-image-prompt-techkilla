@@ -54,7 +54,7 @@ export default function Prompt({ capturedImage }) {
   return (
     <div className={styles.Home}>
       <header className={styles.header}>
-        <h1>Enter a Prompt</h1>
+        <h1>Generate Your Image</h1>
       </header>
       <main className={styles.main}>
         <form className={styles.prompt} onSubmit={handleSubmit}>
@@ -74,6 +74,11 @@ export default function Prompt({ capturedImage }) {
               <div className={styles.image}>
                 <img src={generatedImg} alt="generated image" />
               </div>
+              <IoIosCloseCircle
+                onClick={() => {
+                  showImgRef.current.style.display = "none";
+                }}
+              />
             </div>
           ) : (
             <div className={styles.loading}>
