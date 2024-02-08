@@ -37,13 +37,14 @@ export default function Prompt({ capturedImage }) {
       showImgRef.current.style.display = "flex";
       setGeneratedImg("");
       axios
-        .post("https://59df-103-17-110-127.ngrok-free.app/img", {
+        .post("https://76ec-103-17-110-127.ngrok-free.app/img2img", {
           data: prompt,
           image: capturedImage.split(",")[1],
+          // image: capturedImage,
         })
         .then(function (response) {
           console.log(response);
-          setGeneratedImg(`data:image/webp;base64,${response.data.image}`);
+          setGeneratedImg(`data:image/webp;base64,${response.data.result}`);
         })
         .catch(function (error) {
           console.log(error);
