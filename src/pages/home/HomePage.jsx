@@ -18,6 +18,7 @@ const EMPTY_CONTACT = {
 export default function HomePage() {
   const navigate = useNavigate();
   const [contact, setContact] = useState(EMPTY_CONTACT);
+  const [isLoad, setIsLoad] = useState(false);
 
   const onInputChange = e => {
     setContact({ ...contact, [e.target.name]: e.target.value });
@@ -50,11 +51,13 @@ export default function HomePage() {
   const submitForm = async e => {
     e.preventDefault();
     console.log("submitting the form", contact);
+    setIsLoad(true);
     if (contact.name && contact.email && contact.company && contact.phone) {
       console.log("move on");
 
       const isSend = await send({ ...contact });
       if (isSend) {
+        setIsLoad(false);
         toast.success(
           "The submission of details has been completed successfully",
           toastOptions
@@ -68,12 +71,27 @@ export default function HomePage() {
         console.log("catching error");
       }
     } else {
+      setIsLoad(false);
       toast.error("Please fill all the required fields", toastOptions);
     }
   };
 
   return (
     <div className={styles.HomePage}>
+      {/* pre-loader */}
+      {isLoad && (
+        <div className={styles.preLoader}>
+          <div className={styles.loading}>
+            <div className={styles.ldsRing}>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* header */}
       <Header title={"Enter Your Details"} />
 
