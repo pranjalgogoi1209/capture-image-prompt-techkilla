@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/home/Home";
-import Prompt from "./pages/prompt/Prompt";
+import HomePage from "./pages/home/HomePage";
+import CaptureImagePage from "./pages/captureImagePage/CaptureImagePage";
+import GeneratedImagePage from "./pages/generatedImagePage/GeneratedImagePage";
 
 export default function App() {
   const [capturedImage, setCapturedImg] = useState();
@@ -9,11 +10,16 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home setCapturedImg={setCapturedImg} />} />
+        <Route path="/" element={<HomePage />} />
 
         <Route
-          path="/prompt"
-          element={<Prompt capturedImage={capturedImage} />}
+          path="/capture-image"
+          element={<CaptureImagePage setCapturedImg={setCapturedImg} />}
+        />
+
+        <Route
+          path="/generated-image"
+          element={<GeneratedImagePage capturedImage={capturedImage} />}
         />
       </Routes>
     </BrowserRouter>

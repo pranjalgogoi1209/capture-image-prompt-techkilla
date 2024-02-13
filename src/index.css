@@ -11,4 +11,5 @@ body {
   background-image: url("./assets/pc-background-image.png");
   background-size: cover;
   background-position: center;
+  padding: 4vw;
 }

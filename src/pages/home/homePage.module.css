@@ -1,0 +1,168 @@
+.HomePage {
+  display: flex;
+  flex-direction: column;
+  gap: 10vw;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10vw;
+    main {
+      /* border: 1px solid black; */
+      display: flex;
+      flex-direction: column;
+      gap: 4vw;
+      .inputBox {
+        border: 2px solid transparent;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 1vw;
+        background-color: #fff;
+        padding: 3vw;
+        transition: border ease 0.3s;
+        &:hover {
+          border: 2px solid #212121;
+        }
+        input {
+          /* border: 1px solid black; */
+          border: none;
+          outline: none;
+          background-color: transparent;
+          font-size: 3.8vw;
+          font-weight: bold;
+          width: 85%;
+        }
+        svg {
+          font-size: 4vw;
+          width: 15%;
+          /* border: 1px solid black; */
+        }
+      }
+    }
+
+    footer {
+      /* border: 1px solid black; */
+      button {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+        border: none;
+        background-color: #ffbe2e;
+        outline: none;
+        padding: 2vw 0;
+        font-size: 4vw;
+        font-weight: 600;
+        border-radius: 1vw;
+        cursor: pointer;
+        box-shadow: 0.3vw 0.3vw 0.8vw rgba(0, 0, 0, 0.5);
+        transform: translateY(-0.4vw);
+        transition: all ease 0.5s;
+        &:hover {
+          box-shadow: none;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+/* tablet */
+@media all and (max-width: 991px) {
+  .ContactForm {
+    padding: 2vw 6vw;
+  }
+  .header h1 {
+    font-size: 5vw;
+  }
+  .header p {
+    font-size: 3vw;
+  }
+  .inputBox svg,
+  .services svg {
+    font-size: 2.3vw;
+  }
+  .msg {
+    height: 15vw;
+  }
+  .inputBox,
+  .msg {
+    padding: 2vw 1.5vw;
+  }
+  .inputBox input {
+    font-size: 2.8vw;
+  }
+  .ContactForm {
+    padding: 2vw 8vw;
+  }
+  .inputBox svg,
+  .services svg {
+    font-size: 3vw;
+  }
+  .msg {
+    height: 25vw;
+  }
+  .msg textarea {
+    font-size: 2.8vw;
+  }
+  .footer p {
+    font-size: 2vw;
+  }
+
+  .footer button {
+    padding: 1.4vw 1.8vw;
+    font-size: 2.4vw;
+  }
+}
+
+/* mobile */
+@media all and (max-width: 480px) {
+  .ContactForm {
+    padding: 2vw 6vw;
+  }
+  .header h1 {
+    font-size: 7vw;
+  }
+  .header p {
+    font-size: 4vw;
+  }
+  .inputBox svg,
+  .services svg {
+    font-size: 2vw;
+  }
+  .msg {
+    height: 25vw;
+  }
+  .inputBox,
+  .msg {
+    padding: 3vw 1.5vw;
+  }
+  .inputBox input {
+    font-size: 3vw;
+  }
+  .ContactForm {
+    padding: 2vw 8vw;
+  }
+  .inputBox svg,
+  .services svg {
+    font-size: 3vw;
+  }
+  .msg {
+    height: 25vw;
+  }
+  .msg textarea {
+    font-size: 3vw;
+  }
+  .footer p {
+    font-size: 2.5vw;
+  }
+
+  .footer button {
+    /* border: 1px solid black; */
+    color: #212121;
+    padding: 1vw 1.2vw;
+    width: 100%;
+    font-size: 4vw;
+  }
+}
