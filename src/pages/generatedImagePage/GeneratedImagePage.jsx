@@ -45,6 +45,25 @@ export default function GeneratedImagePage({ capturedImage }) {
   // handlePrint
   const handlePrint = useReactToPrint({
     content: () => printRef.current,
+    pageStyle: `
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printableArea, #printableArea * {
+        visibility: visible;
+      }
+      #printableArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  `,
   });
 
   useEffect(() => {
@@ -54,7 +73,7 @@ export default function GeneratedImagePage({ capturedImage }) {
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
         canvas.width = img.width * 1;
-        canvas.height = img.height * 1;
+        canvas.height = img.height * 1.06;
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
         const scaledImage = canvas.toDataURL("image/png");
         setPrintImage(scaledImage);
@@ -116,11 +135,15 @@ export default function GeneratedImagePage({ capturedImage }) {
           />
           <button type="submit">Generate</button>
         </form>
-        <div className={styles.resultContainer}>
+        <div
+          className={styles.resultContainer}
+          id="printableArea"
+          ref={printRef}
+        >
           <div className={styles.generatedImgContainer} ref={showImgRef}>
             {printImage ? (
               <div className={styles.image}>
-                <img src={printImage} alt="generated image" ref={printRef} />
+                <img src={printImage} alt="generated image" />
               </div>
             ) : (
               <div className={styles.loading}>
