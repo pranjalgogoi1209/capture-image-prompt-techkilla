@@ -105,7 +105,7 @@ export default function GeneratedImagePage({ capturedImage }) {
       setPrintImage("");
       console.log("capturedImage =>", capturedImage);
       axios
-        .post("https://76ec-103-17-110-127.ngrok-free.app/img2img", {
+        .post("https://eecc-103-17-110-127.ngrok-free.app/img2txt", {
           data: prompt,
           image: capturedImage.split(",")[1],
           // image: capturedImage,
