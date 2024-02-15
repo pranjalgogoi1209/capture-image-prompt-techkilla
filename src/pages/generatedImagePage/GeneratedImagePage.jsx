@@ -22,7 +22,7 @@ export default function GeneratedImagePage({ capturedImage }) {
   const handleSubmitQr = () => {
     console.log("submitting qr");
     setShowQrPopup(true);
-    axios
+    /* axios
       .post("https://adp24companyday.com/aiphotobooth/upload.php", {
         img: generatedImg.split(",")[1],
       })
@@ -33,7 +33,7 @@ export default function GeneratedImagePage({ capturedImage }) {
       })
       .catch(function (error) {
         console.log(error);
-      });
+      }); */
   };
 
   generatedImg && console.log("generated Image =>", generatedImg);
@@ -113,6 +113,20 @@ export default function GeneratedImagePage({ capturedImage }) {
         .then(function (response) {
           console.log(response);
           setGeneratedImg(`data:image/webp;base64,${response.data.result}`);
+          // send image to server
+          axios
+            .post("https://adp24companyday.com/aiphotobooth/upload.php", {
+              // img: generatedImg.split(",")[1],
+              img: response.data.result,
+            })
+            .then(function (response) {
+              console.log(response.data.url);
+              console.log("image uploaded 1st time");
+              setQr(response.data.url);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
         })
         .catch(function (error) {
           console.log(error);
